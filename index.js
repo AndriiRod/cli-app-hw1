@@ -1,11 +1,11 @@
-const contactsJson = require("./db/contacts");
+const contactsJson = require("./contacts");
 const { program } = require("commander");
 
 const controller = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "read":
       const contacts = await contactsJson.getContacts();
-      return console.log(contacts);
+      return console.table(contacts);
     case "getById":
       const contact = await contactsJson.getContactsById(id);
       return console.log(contact);
